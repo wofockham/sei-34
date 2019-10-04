@@ -6,7 +6,8 @@ const catFactory = function (n, a, f) { // n: name, a: age, f: fur color
     age: a,
     furColor: f,
     meow: function () {
-      console.log('Meow');
+      console.log( this );
+      console.log('Meow, my name is ' + this.name);
     }
   };
 };
@@ -35,7 +36,7 @@ const Cat = function (n, a, f) {
   this.age = a;
   this.furColor = f;
   this.meow = function () {
-    console.log('Meow');
+    console.log('Meow, my name is ' + this.name);
   };
   // no need to return "this" -- it gets returned automagically.
 };
