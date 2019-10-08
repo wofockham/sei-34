@@ -1,0 +1,26 @@
+/*
+
+Typically we set the box model to the new sizing once and for all, for every element on the page:
+
+* {
+  box-sizing: border-box;
+}
+
+*/
+
+body {
+  background-color: yellow;
+}
+
+.old {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.new {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
