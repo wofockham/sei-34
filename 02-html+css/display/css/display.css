@@ -1,0 +1,31 @@
+body {
+  background-color: pink;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 300px; /* Cheap and nasty way to do vertical centering */
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline; /* width and height are ignored */
+}
+
+.inline-block {
+  display: inline-block; /* So don't use float */
+}
+
+.none {
+  display: none;
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
