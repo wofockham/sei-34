@@ -1,0 +1,45 @@
+/*
+
+selector {
+  property: value;
+  other-property: another-value;
+}
+
+*/
+
+body {
+  background-color: aliceblue;
+  /* Basic reset: */
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  padding: 35px;
+  margin-top: 120px;
+  text-align: right;
+}
+
+a {
+  color: #ff02bd; /* Hex codes: #rrggbb: #000000 - #ffffff */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  background-color: white;
+  text-align: center;
+  text-shadow: 0 0 5px red;
+}
+
+img {
+  width: 50%;
+}
+
+p {
+  font-style: italic;
+}
+
+p.fancy {
+  color: pink;
+  font-style: normal;
+  font-size: 200%;
+}
