@@ -29,3 +29,19 @@ body {
 .visibility-hidden {
   visibility: hidden;
 }
+
+/* Descendent selector */
+.spooky span {
+  visibility: hidden;
+}
+
+/* Pseudoseletor */
+.spooky:hover {
+  background-color: black;
+}
+
+.spooky:hover span {
+  color: yellow;
+  visibility: visible;
+  transition: 2s all;
+}
