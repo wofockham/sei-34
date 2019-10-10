@@ -13,12 +13,18 @@ const books = [
 
 // - Iterate through the array of books. For each book, create a p element with the book title and author and append it to the page.
 
+const ul = document.createElement('ul'); // Detached DOM node
+
 for (let i = 0; i < books.length; i++) {
   const book = books[ i ];
-  const p = document.createElement('p'); // Detached DOM node
-  p.innerText = `${ book.title } by ${ book.author }`;
-  document.body.appendChild( p );
+  const li = document.createElement('li'); // Detached DOM node
+  li.innerText = `${ book.title } by ${ book.author }`;
+
+  if (book.alreadyRead) {
+    li.className = 'read';
+  }
+
+  ul.appendChild( li );
 }
 
-// - Bonus: Use a ul and li to display the books.
-// - Bonus: Change the style of the book depending on whether you have read it or not.
+document.body.appendChild( ul );
