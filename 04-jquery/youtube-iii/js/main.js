@@ -22,3 +22,5 @@ const $links = $('li a'); // Hungarian notation for a jQuery object
 for (let i = 0; i < $links.length; i++) {
   thumbnailify( $links.eq(i) ); // $( $links[i] )
 }
+
+$('h2').funText(100, 'candy');
