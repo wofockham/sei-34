@@ -21,7 +21,7 @@ end
 post '/butterflies' do
   query = "INSERT INTO butterflies (name, family, image) VALUES ('#{ params[:name] }', '#{ params[:family] }', '#{ params[:image] }')"
   query_db query
-  redirect to('/butterflies')
+  redirect to('/butterflies') # GET request
 end
 
 # SHOW
@@ -29,6 +29,12 @@ get '/butterflies/:id' do
   @butterfly = query_db "SELECT * FROM butterflies WHERE id=#{ params[:id] }"
   @butterfly = @butterfly.first # Extract the single butterfly from the array.
   erb :butterflies_show
+end
+
+# DESTROY
+get '/butterflies/:id/delete' do
+  query_db "DELETE FROM butterflies WHERE id=#{ params[:id] }"
+  redirect to("/butterflies")
 end
 
 
