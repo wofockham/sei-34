@@ -1,0 +1,7 @@
+<p>Please pay: <%= number_to_currency @amount %></p>
+<p>You have this many friends:
+  <span title="<%= @large_number %>">
+    <%= number_to_human @large_number %>
+  </span>
+</p>
+<p>Pleae call: <%= number_to_phone @phone, :area_code => true %></p>
