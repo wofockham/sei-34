@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root :to => 'planets#index'
+  get '/planets' => 'planets#index'
+  get '/planets/new' => 'planets#new', :as => 'new_planet'
+  post '/planets' => 'planets#create'
+  get '/planets/:id' => 'planets#show', :as => 'planet'
+  get '/planets/:id/edit' => 'planets#edit', :as => 'edit_planet'
+  post '/planets/:id' => 'planets#update'
+  delete '/planets/:id' => 'planets#destroy'
 end
