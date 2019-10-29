@@ -14,4 +14,10 @@ class PagesController < ApplicationController
     @friend_count = 1
     @enemy_count = 15
   end
+
+  def assets
+  end
+
+  def url
+  end
 end
