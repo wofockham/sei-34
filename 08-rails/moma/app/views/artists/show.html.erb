@@ -3,9 +3,13 @@
 <ul>
   <li>Name: <%= @artist.name %></li>
   <li>Nationality: <%= @artist.nationality %></li>
-  <li>Date of birth: <%= @artist.dob.strftime '%A, %B %e, %Y' %></li>
+  <li>Date of birth: <%= @artist.dob.strftime '%A, %B %e, %Y' if @artist.dob.present? %></li>
   <li>Period: <%= @artist.period %></li>
 </ul>
+
+<% @artist.works.each do |work| %>
+  <%= link_to image_tag(work.image, :class => 'thumb'), work %>
+<% end %>
 
 <div class="controls">
   <%= link_to "Edit artist", edit_artist_path(@artist) %>

@@ -5,7 +5,7 @@
   <ul>
     <li>Name: <%= link_to artist.name, artist %></li>
     <li>Nationality: <%= artist.nationality %></li>
-    <li>Date of birth: <%= artist.dob.strftime '%A, %B %e, %Y' %></li>
+    <li>Date of birth: <%= artist.dob.strftime '%A, %B %e, %Y' if artist.dob.present? %></li>
     <li>Period: <%= artist.period %></li>
   </ul>
 <% end %>
