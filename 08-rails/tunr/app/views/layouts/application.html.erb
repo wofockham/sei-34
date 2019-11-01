@@ -13,6 +13,9 @@
     <nav>
       <%= link_to "Home", root_path %>
       <% if @current_user.present? %>
+        <% if @current_user.admin? %>
+          <%= link_to "All Users", users_path %>
+        <% end %>
         <%= link_to "New mixtape", new_mixtape_path %>
         <%= link_to "Log out #{ @current_user.email }", login_path, :method => 'delete' %>
       <% else %>

@@ -1,4 +1,6 @@
 class MixtapesController < ApplicationController
+  before_action :check_for_login
+
   def new
     @mixtape = Mixtape.new
   end
