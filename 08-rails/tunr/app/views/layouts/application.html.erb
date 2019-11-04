@@ -5,24 +5,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <nav>
-      <%= link_to "Home", root_path %>
-      <% if @current_user.present? %>
-        <% if @current_user.admin? %>
-          <%= link_to "All Users", users_path %>
+    <div class="container">
+
+      <nav>
+        <%= link_to "Home", root_path %>
+        <% if @current_user.present? %>
+          <% if @current_user.admin? %>
+            <%= link_to "All Users", users_path %>
+          <% end %>
+          <%= link_to "New mixtape", new_mixtape_path %>
+          <%= link_to "Log out #{ @current_user.email }", login_path, :method => 'delete' %>
+        <% else %>
+          <%= link_to "Sign up", new_user_path %>
+          <%= link_to "Log in", login_path %>
         <% end %>
-        <%= link_to "New mixtape", new_mixtape_path %>
-        <%= link_to "Log out #{ @current_user.email }", login_path, :method => 'delete' %>
-      <% else %>
-        <%= link_to "Sign up", new_user_path %>
-        <%= link_to "Log in", login_path %>
-      <% end %>
-    </nav>
-    <%= yield %>
+      </nav>
+      <%= yield %>
+
+    </div>
   </body>
 </html>
