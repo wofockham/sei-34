@@ -1,14 +1,23 @@
-// create an XHR object
-const xhr = new XMLHttpRequest();
+const fetchFact = function () {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'http://numbersapi.com/random/trivia?json');
 
-// open an AJAX GET request to the desired URL
-xhr.open('GET', 'http://numbersapi.com/random/trivia');
+  xhr.send(); // Asynchronous
 
-// send the request
-xhr.send(); // Asynchronous
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState !== 4) {
+      return; // It's too soon for us to see any complete data.
+    }
 
-// display the result
-xhr.onreadystatechange = function () {
-  console.log('the ready state has changed', xhr.readyState, xhr.responseText);
-  document.body.innerHTML += xhr.responseText;
+    // Convert the JSON string into an actual JS object.
+    const data = JSON.parse( xhr.responseText );
+
+    const p = document.createElement('p');
+    p.innerHTML = data.text; // data["text"]
+
+    document.body.appendChild(p);
+  };
 };
+
+document.getElementById('fetch').addEventListener('click', fetchFact);
+fetchFact();
