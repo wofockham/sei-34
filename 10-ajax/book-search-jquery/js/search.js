@@ -7,17 +7,23 @@ $(document).ready(function () {
     const bookTitle = $('#book_title').val();
     const url = `https://www.googleapis.com/books/v1/volumes?q=title:${ bookTitle }`;
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
-    xhr.send();
+    // Classic jQuery
+    // $.ajax(url, {
+    //   success: function (data) {
+    //     const cover = data.items[0].volumeInfo.imageLinks.thumbnail;
+    //     $('#cover').attr('src', cover);
+    //   }
+    // });
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState !== 4) return;
-
-      const data = JSON.parse( xhr.responseText );
+    // Deferred style:
+    $.ajax(url).done(function (data) {
       const cover = data.items[0].volumeInfo.imageLinks.thumbnail;
-
       $('#cover').attr('src', cover);
-    }
+    }).done(function (result) {
+      console.log(result);
+    }).fail(function () {
+      alert('Something bad happen');
+    });
+
   });
 });
