@@ -3,9 +3,9 @@ console.log( _.VERSION );
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
 // .each() /////////////////////////////////////////////////////////////////////
-
 // es5 and greater: .forEach
 
+// Alternative syntax:
 // _.each(nums, function (number) {
 //   console.log( number );
 // });
@@ -70,7 +70,7 @@ const firstMultipleOfFive = _(nums).find(function (n) {
   return n % 5 === 0; // return true or false
 });
 
-// .find() also works with objects and if you find a use for it, i will buy a beer.
+// .find() also works with objects and if you find a use for it, I will buy you a beer.
 
 // .filter() ///////////////////////////////////////////////////////////////////
 const isEven = function (n) {
@@ -83,3 +83,22 @@ console.log( evens ); // The Evens are a great band from Washington DC
 // .reject() ///////////////////////////////////////////////////////////////////
 const odds = _(nums).reject( isEven );
 console.log( odds );
+
+// .pluck() ////////////////////////////////////////////////////////////////////
+const bros = [
+  {name: 'Groucho', instrument: 'guitar', vice: 'cigars', age: 45},
+  {name: 'Harpo', instrument: 'harp', vice: 'mutism', age: 44},
+  {name: 'Chico', instrument: 'piano', vice: 'infidelity', age: 47},
+];
+
+console.log( _(bros).pluck('vice') );
+
+// .max() //////////////////////////////////////////////////////////////////////
+console.log( _(nums).max() );
+
+// .sortBy() ///////////////////////////////////////////////////////////////////
+console.log( _(bros).sortBy('vice') );
+
+// .shuffle() and .sample() ////////////////////////////////////////////////////
+console.log( _(nums).shuffle() );
+console.log( _(nums).sample() );
