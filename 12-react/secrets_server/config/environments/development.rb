@@ -1,4 +1,7 @@
 Rails.application.configure do
+
+  config.hosts.clear # ngrok support: Don't block any domain names
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
