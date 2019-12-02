@@ -1,0 +1,8 @@
+# A list of integers, one per line
+1
+2
+
+
+7
+8
+-2
