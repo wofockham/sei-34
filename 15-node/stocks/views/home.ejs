@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <%- include('partials/head.ejs') %>
+  <body>
+    <%- include('partials/nav.ejs'); %>
+    <h1>Look Up A Stock Price</h1>
+
+    <form action="/info">
+      <label>
+        Stock Symbol:
+        <input type="search" name="symbol" placeholder="GOOG" required autofocus>
+      </label>
+      <input type="submit" value="Go">
+    </form>
+  </body>
+</html>
