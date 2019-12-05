@@ -1,36 +1,31 @@
-const state = {
+'use strict';
+
+console.log('Hello world: ' + Math.random());
+
+var state = {
   currentPage: 1,
   lastPageReached: false
 };
 
-const showImages = function (results) {
+var showImages = function showImages(results) {
   // Nested helper function
-  const generateURL = function (p) {
-    return [
-      'http://farm',
-      p.farm,
-      '.static.flickr.com/',
-      p.server,
-      '/',
-      p.id,
-      '_',
-      p.secret,
-      '_q.jpg' // Change this to something to else for different sizes (see docs)
+  var generateURL = function generateURL(p) {
+    return ['http://farm', p.farm, '.static.flickr.com/', p.server, '/', p.id, '_', p.secret, '_q.jpg' // Change this to something to else for different sizes (see docs)
     ].join('');
   };
 
   _(results.photos.photo).each(function (photo) {
-    const thumbnailURL = generateURL( photo );
-    const $img = $('<img>', {src: thumbnailURL}); // equivalent to .attr('src', thumbnailURL)
+    var thumbnailURL = generateURL(photo);
+    var $img = $('<img>', { src: thumbnailURL }); // equivalent to .attr('src', thumbnailURL)
     $img.appendTo('#images');
   });
 };
 
-const searchFlickr = function (terms) {
+var searchFlickr = function searchFlickr(terms) {
 
   if (state.lastPageReached) return;
   console.log("Searching Flickr for", terms);
-  const flickrURL = 'https://api.flickr.com/services/rest?jsoncallback=?';
+  var flickrURL = 'https://api.flickr.com/services/rest?jsoncallback=?';
 
   $.getJSON(flickrURL, {
     method: 'flickr.photos.search',
@@ -39,14 +34,14 @@ const searchFlickr = function (terms) {
     format: 'json',
     page: state.currentPage++
   }).done(showImages).done(function (results) {
-    console.log( results );
+    console.log(results);
     if (results.photos.page >= results.photos.pages) {
       state.lastPageReached = true;
     }
   });
 };
 
-const debouncedSearchFlickr = _.debounce(searchFlickr, 4000, { trailing: false });
+var debouncedSearchFlickr = _.debounce(searchFlickr, 4000, { trailing: false });
 
 $(document).ready(function () {
   $('#search').on('submit', function (event) {
@@ -54,16 +49,16 @@ $(document).ready(function () {
     state.currentPage = 1;
     state.lastPageReached = false;
     $('#images').empty();
-    const query = $('#query').val();
-    searchFlickr( query );
+    var query = $('#query').val();
+    searchFlickr(query);
   });
 
   // Extremely twitchy
   $(window).on('scroll', function () {
-    const scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
+    var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
     if (scrollBottom < 650) {
-      const query = $('#query').val();
-      debouncedSearchFlickr( query );
+      var query = $('#query').val();
+      debouncedSearchFlickr(query);
     }
   });
 });
