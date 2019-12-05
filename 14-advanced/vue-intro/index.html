@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    {{ message }}
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello World'
+      }
+    });
+  </script>
+
+  <div id="app-2">
+    <span v-bind:title="message">
+      Hover your mouse here
+    </span>
+  </div>
+
+  <script>
+    const app2 = new Vue({
+      el: '#app-2',
+      data: {
+        message: 'You loaded this page at ' + new Date().toLocaleString()
+      }
+    });
+  </script>
+
+  <div id="app-3">
+    <span v-if="seen">Can you see me</span>
+  </div>
+
+  <script>
+    const app3 = new Vue({
+      el: '#app-3',
+      data: {
+        seen: true
+      }
+    });
+  </script>
+
+  <div id="app-4">
+    <ol>
+      <li v-for="task in todos">
+        {{ task.text }}
+      </li>
+    </ol>
+  </div>
+
+  <script>
+    const app4 = new Vue({
+      el: '#app-4',
+      data: {
+        todos: [
+          { text: 'Kill all humans' },
+          { text: 'Practice Vue' },
+          { text: 'Do CRUD stuff' }
+        ]
+      }
+    })
+  </script>
+
+  <div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse!</button>
+  </div>
+
+  <script>
+    const app5 = new Vue({
+      el: '#app-5',
+      data: {
+        message: 'Hello World'
+      },
+      methods: {
+        reverseMessage() {
+          this.message = this.message.split('').reverse().join('');
+        }
+      }
+    })
+  </script>
+
+  <div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+  </div>
+
+  <script>
+    const app6 = new Vue({
+      el: '#app-6',
+      data: {
+        message: "KILL ALL HUMANS"
+      }
+    });
+  </script>
+</body>
+</html>
