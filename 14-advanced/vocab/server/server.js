@@ -16,12 +16,14 @@ mongoose.connect(
 const port = process.env.PORT || 3000;
 const server = express();
 
-server.use(cors);
+server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
 routes(server);
 server.listen(port);
+
+server.get('/', (req, res) => res.send('hi'));
 
 server.use((req, res) => {
   res.status(404).send({ url: req.originalUrl + ' not found' });
