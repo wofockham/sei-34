@@ -1,4 +1,7 @@
 class SinglyLinkedList
+
+  include Enumerable # Mixin: Ruby equivalent of multiple inheritance
+
   class Node
     attr_accessor :value, :next
 
@@ -50,14 +53,27 @@ class SinglyLinkedList
 
   # TODO: tricky
   def reverse
+    reversed_list = SinglyLinkedList.new
+    node = @head
+    while node
+      reversed_list.prepend(node.value)
+      node = node.next
+    end
+    reversed_list
   end
 
   # TODO: trickier
   def reverse!
+    @head = self.reverse.head
   end
 
   # TODO: tricky -- how do you accept/invoke a block?
   def each
+    node = @head
+    while node
+      yield(node.value) if block_given? # This is similar to a JS callback.
+      node = node.next
+    end
   end
 
   # Also TODO: .map, .reduce, .select, .reject etc
@@ -68,9 +84,9 @@ bros = SinglyLinkedList.new 'Groucho'
 bros.prepend 'Harpo'
 bros.append 'Chico'
 
-# bros.each do |b|
-#   puts b
-# end
+bros.each do |b|
+  puts b
+end
 
 require 'pry'
 binding.pry
