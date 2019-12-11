@@ -17,6 +17,7 @@ const root = {
 };
 
 const server = express();
+
 server.use('/graphql', expressGraphql({
   schema: schema,
   rootValue: root,
