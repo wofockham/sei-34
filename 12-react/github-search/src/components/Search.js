@@ -28,7 +28,7 @@ export default class Search extends Component {
         <form onSubmit={ this._handleSubmit }>
           <label>
             Search:
-            <input type="search" value={ this.state.username } onInput={ this._handleChange }/>
+            <input type="search" value={ this.state.username } onChange={ this._handleChange }/>
           </label>
           <button>Search for { this.state.username }</button>
         </form>
