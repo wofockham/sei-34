@@ -4,7 +4,7 @@ import _ from 'underscore';
 
 export default (props) => {
   const _randomUser = () => {
-    const students = ['agoutzas', 'aleksanderbrymora', 'anapgsilva', 'chrskerr', 'jeffreyquan', 'jezzzm', 'JinSeal', 'KCulmo', 'Kian-F', 'phunky-phresh', 'shaneenvitug']
+    const students = ['agoutzas', 'aleksanderbrymora', 'anapgsilva', 'chrskerr', 'jeffreyquan', 'jezzzm', 'JinSeal', 'KCulmo', 'Kian-F', 'phunky-phresh', 'shaneenvitug'];
     const username = _(students).sample();
     props.history.push(`/details/${ username }`);
   };
