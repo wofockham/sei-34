@@ -7,7 +7,7 @@
 
 const idMaker = function () {
   // sets up an ID variable
-  let id = 0; // This will persists through a closure.
+  let id = 0; // This will persist through a closure.
 
   // We return a function which can still "see" id.
   return function () {
